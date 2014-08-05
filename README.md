@@ -26,3 +26,4 @@
    ```$ php app/console generate:bundle --namespace=Rosia/ChartBundle --format=yml```
 5. Replace the ChartBundle file inside src/Rosia with cloned chart bundle.
 6. Make sure that the bundle is registered in app/AppKernel.php.
+7. Put the rosia_data.json file in web folder inside the framework.

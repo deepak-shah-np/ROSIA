@@ -1,6 +1,6 @@
 <?php
 
-namespace Practise\ChartBundle;
+namespace Rosia\ChartBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

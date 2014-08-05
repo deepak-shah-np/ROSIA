@@ -1,7 +1,7 @@
 parameters:
-#    practise_chart.example.class: Practise\ChartBundle\Example
+#    practise_chart.example.class: Rosia\ChartBundle\Example
 
 services:
-#    practise_chart.example:
+#    Rosia_chart.example:
 #        class: %practise_chart.example.class%
 #        arguments: [@service_id, "plain_value", %parameter%]

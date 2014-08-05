@@ -11,7 +11,7 @@ class PageController extends Controller{
 	public function indexAction(){
 		
 		
-		return $this->render('PractiseChartBundle:Page:index.html.twig');
+		return $this->render('RosiaChartBundle:Page:index.html.twig');
 	}
 
 
@@ -92,7 +92,7 @@ class PageController extends Controller{
 				$json_data=json_encode($final_array);
 
 
-		return $this->render('PractiseChartBundle:Page:topten.html.twig',array('string'=>$json_data));
+		return $this->render('RosiaChartBundle:Page:topten.html.twig',array('string'=>$json_data));
 	}
 
 	public function timelineAction(){
@@ -227,7 +227,7 @@ class PageController extends Controller{
 
 		
 
-		return $this->render('PractiseChartBundle:Page:timeline.html.twig',array('data_rows'=>json_encode($final_timeline),'data_cols'=>json_encode($key_array)));
+		return $this->render('RosiaChartBundle:Page:timeline.html.twig',array('data_rows'=>json_encode($final_timeline),'data_cols'=>json_encode($key_array)));
 	}
 
 	public function packageAction(Request $request){
@@ -266,13 +266,13 @@ if ($post->request->has('submit')) {
 	  
         
         //var_dump($data);
-        return $this->render('PractiseChartBundle:Page:package.html.twig', array('inventory_name'=>$selected_invent,'invent_refined_array'=>$invent_refined_array,'final_data'=>json_encode($final_data),'route_invent_shop'=>json_encode($route_invent_shop)));		
+        return $this->render('RosiaChartBundle:Page:package.html.twig', array('inventory_name'=>$selected_invent,'invent_refined_array'=>$invent_refined_array,'final_data'=>json_encode($final_data),'route_invent_shop'=>json_encode($route_invent_shop)));		
 
 	}
 	
 	public function tableAction(){
 		$string=file_get_contents('rosia_data.json');
-		return $this->render('PractiseChartBundle:Page:table.html.twig',array('string'=>$string));
+		return $this->render('RosiaChartBundle:Page:table.html.twig',array('string'=>$string));
 	}
 
 	public function routeAction(){
@@ -304,7 +304,7 @@ if ($post->request->has('submit')) {
 		
 
 
-		return $this->render('PractiseChartBundle:Page:route.html.twig',array('route_refined'=>$shoproute_refined_array,'route_name'=>$selected_route,'final_array'=>json_encode($final_array),'unique_selected_invent_route'=>json_encode($unique_route_name),'final_invent_route'=>json_encode($final_invent_route)));
+		return $this->render('RosiaChartBundle:Page:route.html.twig',array('route_refined'=>$shoproute_refined_array,'route_name'=>$selected_route,'final_array'=>json_encode($final_array),'unique_selected_invent_route'=>json_encode($unique_route_name),'final_invent_route'=>json_encode($final_invent_route)));
 	}
 	
 }

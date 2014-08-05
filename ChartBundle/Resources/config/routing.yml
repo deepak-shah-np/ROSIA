@@ -1,29 +1,29 @@
-PractiseChartBundle_homepage:
+RosiaChartBundle_homepage:
     pattern: /
     defaults: {_controller:RosiaChartBundle:Page:index }
     requirements:
           method: _GET
-PractiseChartBundle_timeline:
+RosiaChartBundle_timeline:
     pattern: /timeline
     defaults: {_controller:RosiaChartBundle:Page:timeline}
     requirements:
          method: _GET
-PractiseChartBundle_topten:
+RosiaChartBundle_topten:
     pattern: /topten
     defaults: { _controller:RosiaChartBundle:Page:topten}
     requirements:
         method: _GET
-PractiseChartBundle_package:
+RosiaChartBundle_package:
     pattern: /package
     defaults: { _controller:RosiaChartBundle:Page:package}
     requirements:
          method: _GET
-PractiseChartBundle_table:
+RosiaChartBundle_table:
     pattern: /table
     defaults: { _controller:RosiaChartBundle:Page:table}
     requirements:
          method: _GET
-PractiseChartBundle_route:
+RosiaChartBundle_route:
     pattern: /route
     defaults: { _controller:RosiaChartBundle:Page:route}
     requirements:

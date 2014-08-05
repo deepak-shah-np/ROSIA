@@ -1,6 +1,6 @@
 <?php
 
-namespace Practise\ChartBundle\DependencyInjection;
+namespace Rosia\ChartBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;

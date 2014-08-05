@@ -1,5 +1,5 @@
 <?php
-	namespace Practise\ChartBundle\Entity;
+	namespace Rosia\ChartBundle\Entity;
 
 	class Route{
 	public function route_data($selected_route=array()){

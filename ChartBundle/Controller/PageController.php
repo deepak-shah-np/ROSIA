@@ -1,8 +1,8 @@
 <?php
-namespace Practise\ChartBundle\Controller;
-use Practise\ChartBundle\Entity\Task;
-use Practise\ChartBundle\Entity\Route;
-use Practise\ChartBundle\Form\EnquiryType;
+namespace Rosia\ChartBundle\Controller;
+use Rosia\ChartBundle\Entity\Task;
+use Rosia\ChartBundle\Entity\Route;
+use Rosia\ChartBundle\Form\EnquiryType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use FOS\ElasticaBundle\Configuration\Search;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Practise\ChartBundle\Form;
+namespace Rosia\ChartBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;

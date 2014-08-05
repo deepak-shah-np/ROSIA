@@ -1,5 +1,5 @@
 <?php
-    namespace Practise\ChartBundle\Entity;
+    namespace Rosia\ChartBundle\Entity;
 
     class Task{
 

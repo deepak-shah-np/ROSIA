@@ -1,6 +1,6 @@
 <?php
 
-namespace Practise\ChartBundle\Tests\Controller;
+namespace Rosia\ChartBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

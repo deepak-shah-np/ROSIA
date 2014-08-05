@@ -27,4 +27,4 @@ RosiaChartBundle_route:
     pattern: /route
     defaults: { _controller:RosiaChartBundle:Page:route}
     requirements:
-        method: _GETRosiaChartBundle
+        method: _GET

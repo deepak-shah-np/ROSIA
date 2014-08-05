@@ -1,0 +1,48 @@
+{% extends 'PractiseChartBundle::base.html.twig' %} 
+{% block body %}
+
+
+ <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="{{asset('jquery-1.11.1.min.js')}}"></script>
+  
+  
+<script type="text/javascript">
+
+  
+    google.load('visualization', '1', { 'packages': ['corechart'] });
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data_rows = {{ data_rows|raw }};
+      var data_cols=  {{ data_cols|raw }};
+     
+      
+     // alert(data_rows);
+      var dataTable = new google.visualization.DataTable();
+      var numRows=data_rows.length;
+      var numCols=data_cols.length;
+      
+      
+      dataTable.addColumn('string',data_cols[0]);
+
+      for(var i=1;i<numCols;i++){
+      	
+        dataTable.addColumn('number',data_cols[i]);
+      }
+      for(var i=0;i<numRows;i++){
+        dataTable.addRow(data_rows[i]);
+       
+      }
+      
+    var options = { width:960,height:700, backgroundColor:'#F8F5CE' };
+
+    var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+    chart.draw(dataTable, options);
+  };
+  </script>
+
+</head>
+<div id='chart_div'></div>
+</div>
+
+{% endblock %}

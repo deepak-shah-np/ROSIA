@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+
+		<title>{% block title %}ROSIA Data Visualizatio{% endblock %}</title>
+		<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <script src="jquery-1.11.1.min.js"></script>
+   <script src="/bootstrap/js/bootstrap.min.js"></script>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		{% block stylesheet %}
+		{% endblock %}
+	</head>
+	<body>
+		
+			{% block navigation %}
+			<nav class="navbar navbar-default navbar-static-top" role="navigation" style="background-color:#F5EFB4;">
+			<div class="container">
+			<div class="navbar-header">
+			
+			<ul class="nav navbar-nav navbar-right">
+			
+					
+					<li><a href="{{path('PractiseChartBundle_homepage')}}">Home</a></li>
+					<li><a href="{{path('PractiseChartBundle_package')}}">Package</a></li>
+					<li><a href="{{path('PractiseChartBundle_route')}}">Route</a></li>
+					<li><a href="{{path('PractiseChartBundle_timeline')}}">Timeline</a></li>
+					<li><a href="{{path('PractiseChartBundle_topten')}}">Topten</a></li>
+					<li><a href="{{path('PractiseChartBundle_table')}}">DataTable</a></li>
+					
+			
+			</ul>
+			
+			</div>
+			</div>
+			</nav>
+			{% endblock %}
+			
+		<div class="container">
+		
+		<div class="row">
+				{% block body%}
+				{% endblock %}
+		</div>
+		
+		</div>
+			
+			
+			
+	</body>
+</html>

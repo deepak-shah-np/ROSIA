@@ -1,0 +1,30 @@
+PractiseChartBundle_homepage:
+    pattern: /
+    defaults: {_controller:PractiseChartBundle:Page:index }
+    requirements:
+          method: _GET
+PractiseChartBundle_timeline:
+    pattern: /timeline
+    defaults: {_controller:PractiseChartBundle:Page:timeline}
+    requirements:
+         method: _GET
+PractiseChartBundle_topten:
+    pattern: /topten
+    defaults: { _controller:PractiseChartBundle:Page:topten}
+    requirements:
+        method: _GET
+PractiseChartBundle_package:
+    pattern: /package
+    defaults: { _controller:PractiseChartBundle:Page:package}
+    requirements:
+         method: _GET
+PractiseChartBundle_table:
+    pattern: /table
+    defaults: { _controller:PractiseChartBundle:Page:table}
+    requirements:
+         method: _GET
+PractiseChartBundle_route:
+    pattern: /route
+    defaults: { _controller:PractiseChartBundle:Page:route}
+    requirements:
+        method: _GET

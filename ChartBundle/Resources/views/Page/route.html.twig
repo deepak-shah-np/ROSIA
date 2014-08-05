@@ -1,0 +1,118 @@
+{% extends 'PractiseChartBundle::base.html.twig' %} 
+{% block body %}
+<style type="text/css">
+  #grad {
+  background: -webkit-linear-gradient(#F8F3C7, #F8F5CE); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#F8F3C7, #F8F5CE); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#F8F3C7, #F8F5CE); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#F8F3C7, #F8F5CE); /* Standard syntax */
+}
+
+
+</style>
+<div id="grad" style=" background-color:#F8F3C7; padding-left:50px;padding-top:20px;">
+<form class="form-horizontal" role="form" name="dropdown" action="" method="post">
+<div class="form-group">
+<div class="col-sm-8">
+ 	<select name="route" class="form-control">
+ 		{% for item in route_refined %}
+ 		<option value="{{ item }}">{{ item }}</option>
+ 		{% endfor %}
+ 	</select>
+  </div>
+  </div>
+  <br/>
+  <div class="form-group">
+    <div class="col-sm-4">
+  	<input name="submit" type="submit" class="btn btn-default" />
+    </div>
+    </div>
+ </form>
+  <div style="color:green">
+  {% if route_name is defined %}
+ 	<strong>Route name: {{ route_name }}</strong>
+ 	
+
+ {% endif %}
+ </div>
+ </div>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  
+<script type="text/javascript">
+
+  
+    google.load('visualization', '1', { 'packages': ['corechart'] });
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data_rows= {{ final_array|raw }};
+      var data_cols=  {{ unique_selected_invent_route|raw }};
+      var data_invent= {{ final_invent_route|raw }};
+      
+     // alert(data_rows);
+      var dataTable = new google.visualization.DataTable();
+      var dataTable_invent=new google.visualization.DataTable();
+
+      var numRows=data_rows.length;
+      var numCols=data_cols.length;
+      var invent_numRows=data_invent.length;
+      
+      dataTable_invent.addColumn('string','Product');
+      dataTable_invent.addColumn('number','Quantity');
+      for(var i=0;i<invent_numRows;i++){
+      	dataTable_invent.addRow(data_invent[i]);
+      }
+      
+      
+      dataTable.addColumn('string','Shopname');
+
+      for(var i=0;i<numCols;i++){
+      	
+        dataTable.addColumn('number',data_cols[i]);
+      }
+      for(var i=0;i<numRows;i++){
+        dataTable.addRow(data_rows[i]);
+       
+      }
+      
+   var options = {
+   	height:700,
+   	isStacked:true,
+    backgroundColor:'#F8F5CE',
+  annotations: {
+    boxStyle: {
+      stroke: '#888',           // Color of the box outline.
+      strokeWidth: 10,           // Thickness of the box outline.
+      rx: 10,                   // x-radius of the corner curvature.
+      ry: 10,                   // y-radius of the corner curvature.
+      gradient: {               // Attributes for linear gradient fill.
+        color1: '#fbf6a7',      // Start color for gradient.
+        color2: '#33b679',      // Finish color for gradient.
+        x1: '0%', y1: '0%',     // Where on the boundary to start and end the
+        x2: '100%', y2: '100%', // color1/color2 gradient, relative to the
+                                // upper left corner of the boundary.
+        useObjectBoundingBoxUnits: true // If true, the boundary for x1, y1,
+                                        // x2, and y2 is the box. If false,
+                                        // it's the entire chart.
+      }
+    }
+  }
+};
+  var options_pie = {
+          height:700,
+          backgroundColor:'#F8F5CE',
+          title:'Total sale of product'
+        };
+
+   var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+   var pie = new google.visualization.PieChart(document.getElementById('pie_div'));
+
+   chart.draw(dataTable, options);
+   pie.draw(dataTable_invent,options_pie);
+  };
+  </script> 
+	<div id="chart_div">
+  		</div>
+  		<div id="pie_div">
+  		</div>
+
+{% endblock %}

@@ -1,0 +1,152 @@
+{% extends 'PractiseChartBundle::base.html.twig' %} 
+
+{% block body %}
+<style type="text/css">
+  #grad {
+  background: -webkit-linear-gradient(#F8F3C7, #F8F5CE7); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#F8F3C7, #F8F5CE); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#F8F3C7, #F8F5CE); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#F8F3C7, #F8F5CE); /* Standard syntax */
+}
+
+
+</style>
+<div id="grad" style="padding-top:20px;padding-left:50px;background-color:#F8F3C7;">
+  <h3></h3>
+ <form class="form-horizontal" role="form" name="dropdown" ,action="" method="post">
+ <div class="form-group">
+   <div class="col-sm-8">
+   	<select name="invent" class="form-control">
+   		{% for item in invent_refined_array%}
+   		<option value="{{ item }}">{{ item }}</option>
+   		{% endfor %}
+   	</select>
+    </div>
+    </div>
+ 	<!--button type="submit" class="btn btn-default"> Submit</button-->
+  <br/>
+  <div class="form-group">
+    <div class="col-sm-4">
+      <input class="btn btn-default"type="submit" value="submit" name="submit">
+    </div>
+  </div>
+ </form>
+
+  <div style="text-size:large;color:green;">
+
+    {% if inventory_name is defined %}
+    
+   <strong>Inventory name: {{ inventory_name }}</strong>
+
+   
+    
+   	
+
+   {% endif %}
+
+   </div>
+  </div>
+
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  
+<script type="text/javascript">
+
+  
+    google.load('visualization', '1', { 'packages': ['corechart'] });
+    google.setOnLoadCallback(drawChart);
+    
+    function drawChart() {
+      var data_rows = {{final_data|raw}};
+      
+      
+     
+      
+     // alert(data_rows);
+      var dataTable = new google.visualization.DataTable();
+      
+
+      var numRows=data_rows.length;
+      
+      
+      
+      dataTable.addColumn('string','Route');
+      dataTable.addColumn('number','Quantity');
+      
+      
+      for(var i=0;i<numRows;i++){
+        dataTable.addRow(data_rows[i]);
+       
+      }
+      
+   var options = {
+    height:700,
+    isStacked:true,
+    backgroundColor:'#F8F5CE',
+  annotations: {
+    boxStyle: {
+      stroke: '#888',           // Color of the box outline.
+      strokeWidth : 10,           // Thickness of the box outline.
+      rx: 10,                   // x-radius of the corner curvature.
+      ry: 10,                   // y-radius of the corner curvature.
+      gradient: {               // Attributes for linear gradient fill.
+        color1: '#fbf6a7',      // Start color for gradient.
+        color2: '#33b679',      // Finish color for gradient.
+        x1: '0%', y1: '0%',     // Where on the boundary to start and end the
+        x2: '100%', y2: '100%', // color1/color2 gradient, relative to the
+                                // upper left corner of the boundary.
+        useObjectBoundingBoxUnits: true // If true, the boundary for x1, y1,
+                                        // x2, and y2 is the box. If false,
+                                        // it's the entire chart.
+      }
+    }
+  }
+};
+
+
+   var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+   
+
+   chart.draw(dataTable, options);
+     google.visualization.events.addListener(chart,'select',selectHandler);
+  function selectHandler() {
+          var selectedItem = chart.getSelection()[0];
+          if (selectedItem) {
+            var routename;
+            routename = dataTable.getValue(selectedItem.row, 0);
+            document.getElementById("routename").innerHTML=routename;
+            var shop_invent={{ route_invent_shop|raw }};
+            //console.log(shop_invent[routename]);
+            var route_data=shop_invent[routename];
+            var shop_length=route_data.length;
+            var dataTable_shop= new google.visualization.DataTable();
+            dataTable_shop.addColumn('string','Shopname');
+          dataTable_shop.addColumn('number','Quantity');
+      
+      
+          for(var i=0;i<shop_length;i++){
+            dataTable_shop.addRow(route_data[i]);
+       
+         }
+         var shop_chart = new google.visualization.ColumnChart(document.getElementById('chart_div1'));
+   
+          var options1 = {backgroundColor:'#F8F5CE'};
+          shop_chart.draw(dataTable_shop, options1);
+          }
+        }
+  
+  };
+ 
+  </script>
+  
+<div class="row" id="chart_div" style="margin-left:0px;">
+</div>
+<strong>
+<div class="text-success" id="routename" style="font-size:100%;padding-left:50px;color:green; background-color:#F8F5CE;"> </div>
+</strong>
+<div id="chart_div1"></div>
+
+
+{% endblock %}
+
+

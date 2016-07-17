@@ -3,7 +3,7 @@
 
 ##ROSIA data visualization.
 ###Instruction
-1. To run the project simply close the project from github.<br>
+1. To run the project simply clone the project from github.<br>
     ``` $ git clone https://github.com/hello-deepak/ROSIA```
 2. Install symfony2. Instructions to install symfony given below.
 
